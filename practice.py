@@ -20,8 +20,12 @@ def signup():
         "mobile_number" : mobile_num
     }
 
-    with open("database.json","r") as f:
-        data = json.load(f)
+    try:
+        with open("database.json","r") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        data= {}
+        
 
     data_list = data["student"]
     data_list.append(signup_dict)
